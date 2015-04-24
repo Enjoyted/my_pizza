@@ -1,0 +1,5 @@
+Login Success.
+<br />
+<?php if(isset($blocked)){ echo $blocked; } ?>
+ <?php var_dump($_SESSION['user']); ?>
+<a href="<?php echo $this->url('login/process', array('action'=>'logout')); ?>">Logout</a>

@@ -1,0 +1,47 @@
+<?php
+
+ $title = 'My Users';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('user', array('action'=>'add'));?>">Add a new user</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>Username</th>
+     <th>E-Mail</th>
+     <th>Role</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($users as $user) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($user->username);?></td>
+     <td><?php echo $this->escapeHtml($user->email);?></td>
+     <td><?php echo $this->escapeHtml($user->role);?></td>
+     <td>
+        <?php if(!$this->escapeHtml($user->role == '3')) { ?>
+         <a href="<?php echo $this->url('user',
+             array('action'=>'edit', 'id' => $user->id));?>">Edit</a>
+         <a href="<?php echo $this->url('user',
+             array('action'=>'delete', 'id' => $user->id));?>">Delete</a>
+         <?php } ?>
+     </td>
+     <?php if(!$this->escapeHtml($user->role == '3')) { ?>
+     <td> <?php 
+                if($this->escapeHtml($user->status == 'active')) {
+            ?>
+        <a href="<?php echo $this->url('user', 
+        array('action' => 'blockUser', 'id' => $user->id)); ?>">
+        <input type="button" value="Bloquer"/></a> 
+        <?php } else { ?>
+        <a href="<?php echo $this->url('user', 
+        array('action' => 'unblockUser', 'id' => $user->id)); ?>">
+        <input type="button" value="Debloquer" /></a>
+        <?php } ?>
+    </td>
+    <?php } ?>
+ </tr>
+ <?php endforeach; ?>
+ </table>

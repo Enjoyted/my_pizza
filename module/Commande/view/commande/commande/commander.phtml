@@ -1,0 +1,22 @@
+<h1> votre commande </h1>
+
+
+<?php foreach($commande as $value)
+		{
+			echo $value->name . "<br>";
+			echo $value->prix . "<br>";
+		}
+
+ ?>
+<h3> prix total </h3>
+
+<?php
+	$total = 0;
+	foreach($commande as $k => $value)
+	{
+		$total += $value->prix;
+	}
+	echo $total;
+ ?>
+ <br />
+<a href="<?php echo $this->url('commande', array('action' => 'confirm')) ?>"> <input type="button" value="confirmer"/> </a>

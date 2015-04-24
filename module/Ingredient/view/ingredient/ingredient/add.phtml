@@ -1,0 +1,16 @@
+ <?php
+
+ $title = 'Add new ingredient';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <?php
+ $form->setAttribute('action', $this->url('ingredient', array('action' => 'add')));
+ $form->prepare();
+
+ echo $this->form()->openTag($form);
+ echo $this->formHidden($form->get('id'));
+ echo $this->formRow($form->get('id_produit'));
+ echo $this->formRow($form->get('id_fourniture'));
+ echo $this->formSubmit($form->get('submit'));
+ echo $this->form()->closeTag();

@@ -1,0 +1,28 @@
+<?php
+ $title = 'Notre carte';
+ $this->headTitle($title);
+ ?>
+ <h1><?php $this->escapeHtml($title); ?></h1>
+<div style="margin-left:41%;">
+<h3> Votre panier </h3>
+ <a href="<?php echo $this->url('produit', array('action' => 'viewpanier')); ?>"><img style="width:80px;margin-left:25px;" src="/img/panier.jpg" alt="panier"/></a>
+ </div>
+ <table class="table">
+ <tr>
+ 	<th>Image</th>
+     <th>Name</th>
+     <th>Ingredients</th>
+     <th>Prix</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($produits as $produit) : ?>
+ <tr>
+ 	 <td> <img src="<?php echo $this->escapeHtml($produit->path); ?>" alt="pizza" /> </td>
+     <td><?php echo $this->escapeHtml($produit->name);?></td>
+     <td><?php // echo $this->escapeHtml($produit->ingredient);?></td>
+     <td><?php echo $this->escapeHtml($produit->prix) . '€'; ?></td>
+     <td> <a href="<?php echo $this->url('produit', array('action' => 'panier', 'id' => $produit->id)); ?>"><input type="submit" value="Ajouter"/></a> 
+    </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>

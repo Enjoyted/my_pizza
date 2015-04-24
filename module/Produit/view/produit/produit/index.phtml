@@ -1,0 +1,33 @@
+<?php
+
+ $title = 'Produits';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('produit', array('action'=>'add'));?>">Add a new produit</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>Pizza</th>
+     <th>Name</th>
+     <th>Ingredients</th>
+     <th>Prix</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($produits as $produit) : ?>
+ <tr>
+     <td><img src="<?php echo $this->escapeHtml($produit->path); ?>" alt="<?php echo $this->escapeHtml($produit->name); ?>"></img></td>
+     <td><?php echo $this->escapeHtml($produit->name);?></td>
+     <td> <?php // echo $this->escapeHtml($produit->ingredient);?></td>
+     <td><?php echo $this->escapeHtml($produit->prix) . '€'; ?></td>
+     <td>
+         <a href="<?php echo $this->url('produit',
+             array('action'=>'edit', 'id' => $produit->id));?>">Edit</a>
+         <a href="<?php echo $this->url('produit',
+             array('action'=>'delete', 'id' => $produit->id));?>">Delete</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>

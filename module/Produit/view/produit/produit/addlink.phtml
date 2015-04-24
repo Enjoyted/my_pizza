@@ -1,0 +1,23 @@
+<h1> addLink </h1>
+
+<?php foreach($fournitures as $fourniture){
+
+	echo $fourniture->id;
+	echo $fourniture->name;
+	echo "<br>";
+} ?>
+
+
+<form action='' method='POST'>
+			<input type='hidden' name='produit_id' value='<?= $produit['id']; ?>'>
+			
+			 <div>
+				<label>Ressource 1</label>
+				<select name='ressources_id1'>
+						<option value="" selected>Aucun choix</option>
+					<?php foreach ($fournitures as $fourniture): ?>
+						<option value='<?= $fourniture->id ?>'><?= $fourniture->name; ?></option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+		</form>
